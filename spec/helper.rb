@@ -4,13 +4,13 @@ unless ENV['CI']
     add_filter 'spec'
   end
 end
-require 'silverpop'
+require 'acoustic'
 require 'rspec'
 require 'webmock/rspec'
 require 'pry'
 
 def stub_post(url)
-  stub_request(:post, silverpop_url(url))
+  stub_request(:post, acoustic_url(url))
 end
 
 def fixture_path
@@ -21,6 +21,6 @@ def fixture(file)
   File.new(fixture_path + '/' + file)
 end
 
-def silverpop_url(url)
-  "https://api1.silverpop.com#{url}"
+def acoustic_url(url)
+  "https://api-campaign-us-1.goacoustic.com#{url}"
 end

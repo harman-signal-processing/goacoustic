@@ -1,27 +1,27 @@
 require 'helper'
 
-describe SilverPop::Client::Contact do
+describe Acoustic::Client::Contact do
   before do
-    @client = SilverPop::Client.new({access_token: "abc123",url: 'https://api1.silverpop.com'})
+    @client = Acoustic::Client.new({access_token: "abc123",url: 'https://api-campaign-us-1.goacoustic.com'})
   end
 
   describe "#add_recipient" do
     it "should add a recipient to an existing database" do
-      stub_post("/XMLAPI?access_token=abc123").
+      stub_post("/XMLAPI").
         with(:body => "<Envelope><Body><AddRecipient><LIST_ID>123</LIST_ID><CREATED_FROM>1</CREATED_FROM><CONTACT_LISTS><CONTACT_LIST_ID>456</CONTACT_LIST_ID></CONTACT_LISTS><COLUMN><NAME>email</NAME><VALUE>test@example.com</VALUE></COLUMN></AddRecipient></Body></Envelope>").
-          to_return(:status => 200, :body => fixture("contact.xml"), :headers => {'Content-type' => "text/xml"})
+          to_return(:status => 200, :body => fixture("contact.xml"), :headers => {'Content-type' => "text/xml", 'Authorization' => 'Bearer abc123'})
 
       resp = @client.add_recipient({email:"test@example.com"}, 123, [456])
-      resp.Envelope.Body.RESULT.SUCCESS.should eql "TRUE"
+      expect(resp.Envelope.Body.RESULT.SUCCESS).to eql "TRUE"
     end
 
     it "should add a recipient to an existing database with options" do
-      stub_post("/XMLAPI?access_token=abc123").
+      stub_post("/XMLAPI").
         with(:body => "<Envelope><Body><AddRecipient><LIST_ID>123</LIST_ID><CREATED_FROM>1</CREATED_FROM><CONTACT_LISTS><CONTACT_LIST_ID>456</CONTACT_LIST_ID></CONTACT_LISTS><UPDATE_IF_FOUND>true</UPDATE_IF_FOUND><COLUMN><NAME>email</NAME><VALUE>test@example.com</VALUE></COLUMN></AddRecipient></Body></Envelope>").
-          to_return(:status => 200, :body => fixture("contact.xml"), :headers => {'Content-type' => "text/xml"})
+          to_return(:status => 200, :body => fixture("contact.xml"), :headers => {'Content-type' => "text/xml", 'Authorization' => 'Bearer abc123'})
 
       resp = @client.add_recipient({email:"test@example.com"}, 123, [456], 1, {UPDATE_IF_FOUND: "true"})
-      resp.Envelope.Body.RESULT.SUCCESS.should eql "TRUE"
+      expect(resp.Envelope.Body.RESULT.SUCCESS).to eql "TRUE"
     end
 
   end

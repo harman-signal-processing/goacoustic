@@ -1,4 +1,4 @@
-module SilverPop
+module Acoustic
   class Client
     module User
       # ExportList - This interface exports contact data from a database, query, or contact list. Engage exports the results to a CSV file, then adds that file to the FTP account associated with the current session.
@@ -10,7 +10,7 @@ module SilverPop
       # @param export_colums [Array] XML node used to request specific custom database columns to export for each contact.
       # @return [Mash] Mashify body from the API call
       # @example Export list 12345 for 1/1/2014 to 1/2/2014
-      #   s = SilverPop.new({access_token: "abc123", url: "https://api1.silverpop.com"})
+      #   s = Acoustic.new({access_token: "abc123", url: "https://api-campaign-us-1.goacoustic.com"})
       #   s.export_list('12345', 'ALL', 'CSV", {DATE_START: "1/1/2014", DATE_END:"1/2/2014"})
       def export_list(list_id, export_type, export_format, options={}, export_columns=[])
         builder = Builder::XmlMarkup.new

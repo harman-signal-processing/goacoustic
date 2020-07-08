@@ -1,4 +1,4 @@
-module SilverPop
+module Acoustic
   class Client
     module RelationalTable
       # InsertUpdateRelationalTable - This interface inserts or updates relational data.
@@ -7,7 +7,7 @@ module SilverPop
       # @param rows [Array]
       # @return [Mash] Mashify body from the API call
       # @example Insert into table 86767 a row with one column
-      #   s = SilverPop.new access_token: 'abc123', url: 'https://api1.silverpop.com'
+      #   s = Acoustic.new access_token: 'abc123', url: 'https://api-campaign-us-1.goacoustic.com'
       #   s.insert_update_relational_table '86767', [{'Record Id' => 'GHbjh73643hsdiy'}]
       def insert_update_relational_table table_id, rows
         builder = Builder::XmlMarkup.new
@@ -43,7 +43,7 @@ module SilverPop
     # @param export_colums [Array] XML node used to request specific custom database columns to export for each contact.
     # @return [Mash] Mashify body from the API call
     # @example Export Table 12345 for 1/1/2014 to 1/2/2014
-    #   s = SilverPop.new({access_token: "abc123", url: "https://api1.silverpop.com"})
+    #   s = Acoustic.new({access_token: "abc123", url: "https://api-campaign-us-1.goacoustic.com"})
     #   s.export_table('12345', 'CSV', {DATE_START: "1/1/2014", DATE_END:"1/2/2014"})
     def export_table(table_id, export_format, options={})
       builder = Builder::XmlMarkup.new

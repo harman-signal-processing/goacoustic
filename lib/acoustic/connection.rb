@@ -1,16 +1,16 @@
 require 'faraday_middleware'
 
-module SilverPop
+module Acoustic
   # @private
   module Connection
     private
 
     def connection(options={})
-      connection = Faraday.new @silverpop_url do |conn|
+      connection = Faraday.new @acoustic_url do |conn|
         # Uncomment if want to log to stdout
         #conn.response :logger
 
-        conn.request :oauth2, @access_token
+        conn.request :oauth2, @access_token, token_type: :bearer
         conn.request :url_encoded
         conn.response :mashify
 

@@ -1,15 +1,15 @@
-module SilverPop
+module Acoustic
   class Client
     module Contact
 
       # Adds one new contact to an existing database.
       #
-      # @param fields [Hash] The list of fields to be passed into SilverPop.
+      # @param fields [Hash] The list of fields to be passed into Acoustic.
       # @param list_id [Integer] The ID of the database which you are adding the contact
       # @param contact_list_id [Array] The id of the contact list.
       # @return [Mash] Mashify body from the API call
       # @example Add a new email to the database and contact list
-      #   s = SilverPop::Client.new(access_token)
+      #   s = Acoustic::Client.new(access_token)
       #   s.add_recipient({email: "test@example.com", firstname: "Hello"}, 12345, [4567])
       def add_recipient(fields, list_id, contact_list_id=nil, created_from=1, options={})
         builder = Builder::XmlMarkup.new

@@ -1,27 +1,24 @@
-# SilverPop API
-A Ruby wrapper for the SilverPop API
-
-[![Build Status](https://secure.travis-ci.org/upworthy/silverpop.png?branch=master)][travis]
-[travis]: http://travis-ci.org/upworthy/silverpop
+# Acoustic API
+A Ruby wrapper for the Acoustic API
 
 ## Installation
 
-    $ gem install silverpop
+    $ gem install goacoustic
 
 ## Documentation
 
-[http://rdoc.info/gems/silverpop](http://rdoc.info/gems/silverpop)
+[http://rdoc.info/gems/goacoustic](http://rdoc.info/gems/goacoustic)
 
 
 ## Usage Examples
-    require 'silverpop'
+    require 'acoustic'
     require 'oauth2'
 
     #Generate your OAuth2 access token
-    client = OAuth2::Client.new(SILVERPOP_CLIENT_ID, SILVERPOP_CLIENT_SECRET, site: "https://api1.silverpop.com/oauth/token")
-    access_token = OAuth2::AccessToken.from_hash(client, refresh_token: SILVERPOP_REFRESH_TOKEN).refresh!
+    client = OAuth2::Client.new(ACOUSTIC_CLIENT_ID, ACOUSTIC_CLIENT_SECRET, site: "https://api-campaign-us-1.goacoustic.com/oauth/token")
+    access_token = OAuth2::AccessToken.from_hash(client, refresh_token: ACOUSTIC_REFRESH_TOKEN).refresh!
 
-    @client = SilverPop.new({access_token: access_token.token, url: "https://api1.silverpop.com"})
+    @client = Acoustic.new({access_token: access_token.token, url: "https://api-campaign-us-1.goacoustic.com"})
 
     #add_recipeint
     #pass in user variables, database contact list, and contact list id
@@ -47,7 +44,7 @@ Here are some ways *you* can contribute:
 * by fixing [issues][]
 * by reviewing patches
 
-[issues]: http://github.com/upworthy/silverpop/issues
+[issues]: http://github.com/harman-signal-processing/goacoustic/issues
 
 ## Submitting an Issue
 We use the [GitHub issue tracker][issues] to track bugs and features. Before
@@ -79,7 +76,7 @@ Ideally, a bug report should include a pull request with failing specs.
 [pr]: http://help.github.com/send-pull-requests/
 
 ## Copyright
-Copyright (c) 2013 Upworthy. See [LICENSE][] for details.
+Copyright (c) 2020 Harman. See [LICENSE][] for details.
 
-[license]: https://github.com/upworthy/silverpop/blob/master/LICENSE.md
+[license]: https://github.com/harman-signal-processing/goacoustic/blob/master/LICENSE.md
 

@@ -1,15 +1,15 @@
-require 'silverpop/client'
+require 'acoustic/client'
 
-module SilverPop
+module Acoustic
   class << self
-    # Alias for SilverPop::Client.new
+    # Alias for Acoustic::Client.new
     #
-    # @return [SilverPop::Client]
+    # @return [Acoustic::Client]
     def new(options={})
-      SilverPop::Client.new(options)
+      Acoustic::Client.new(options)
     end
 
-    # Delegate to SilverPop::Client.new
+    # Delegate to Acoustic::Client.new
     def method_missing(method, *args, &block)
       return super unless new.respond_to?(method)
       new.send(method, *args, &block)

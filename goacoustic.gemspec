@@ -22,5 +22,5 @@ Gem::Specification.new do |gem|
   gem.require_paths = ['lib']
   gem.summary     = gem.description
   gem.test_files  = `git ls-files -- {test,spec,features}/*`.split("\n")
-  gem.version     = Acoustic::VERSION
+  gem.version     = GoAcoustic::VERSION
 end

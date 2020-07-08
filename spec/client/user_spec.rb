@@ -1,8 +1,8 @@
 require 'helper'
 
-describe Acoustic::Client::User do
+describe GoAcoustic::Client::User do
   before do
-    @client = Acoustic.new({access_token: "abc123",url: 'https://api-campaign-us-1.goacoustic.com'})
+    @client = GoAcoustic.new({access_token: "abc123",url: 'https://api-campaign-us-1.goacoustic.com'})
   end
 
   describe ".export_list" do

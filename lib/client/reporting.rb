@@ -1,4 +1,4 @@
-module Acoustic
+module GoAcoustic
   class Client
     module Reporting
 
@@ -9,7 +9,7 @@ module Acoustic
       # @param options [Hash] Optional parameters to send
       # @return [Mash] Mashify body from the API call
       # @example Get sent mailing for organization for 1/1/2014 to 1/2/2014
-      #   s = Acoustic.new({access_token: "abc123", url: "https://api-campaign-us-1.goacoustic.com"})
+      #   s = GoAcoustic.new({access_token: "abc123", url: "https://api-campaign-us-1.goacoustic.com"})
       #   s.get_sent_mailings_for_org("1/1/2014", "1/2/2014)
       def get_sent_mailings_for_org(date_start, date_end, options={})
         builder = Builder::XmlMarkup.new
@@ -36,7 +36,7 @@ module Acoustic
       # @param columns [Array] Optional list of columns to limit the flat file.
       # @return [Mash] Mashify body from the API call
       # @example Export raw data events for mailing id
-      #   s = Acoustic.new({access_token: "abc123", url: "https://api-campaign-us-1.goacoustic.com"})
+      #   s = GoAcoustic.new({access_token: "abc123", url: "https://api-campaign-us-1.goacoustic.com"})
       #   s.raw_recipient_data_export({MAILING_ID: 1234},{MOVE_TO_FTP: nil})
       def raw_recipient_data_export(query_params={}, options={}, columns=[])
         builder = Builder::XmlMarkup.new
@@ -79,7 +79,7 @@ module Acoustic
       # @param job_id [Integer] The Job ID of the data job
       # @return [Mash] Mashify body from the API call
       # @example Get Job Status for JOB_ID 1234
-      #   s = Acoustic.new({access_token: "abc123", url: "https://api-campaign-us-1.goacoustic.com"})
+      #   s = GoAcoustic.new({access_token: "abc123", url: "https://api-campaign-us-1.goacoustic.com"})
       #   s.get_job_status(1234)
       def get_job_status(job_id)
         builder = Builder::XmlMarkup.new

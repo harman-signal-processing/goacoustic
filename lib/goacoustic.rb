@@ -1,15 +1,15 @@
-require 'acoustic/client'
+require 'goacoustic/client'
 
-module Acoustic
+module GoAcoustic
   class << self
-    # Alias for Acoustic::Client.new
+    # Alias for GoAcoustic::Client.new
     #
-    # @return [Acoustic::Client]
+    # @return [GoAcoustic::Client]
     def new(options={})
-      Acoustic::Client.new(options)
+      GoAcoustic::Client.new(options)
     end
 
-    # Delegate to Acoustic::Client.new
+    # Delegate to GoAcoustic::Client.new
     def method_missing(method, *args, &block)
       return super unless new.respond_to?(method)
       new.send(method, *args, &block)

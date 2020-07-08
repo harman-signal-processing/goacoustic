@@ -11,14 +11,14 @@ A Ruby wrapper for the Acoustic API
 
 
 ## Usage Examples
-    require 'acoustic'
+    require 'goacoustic'
     require 'oauth2'
 
     #Generate your OAuth2 access token
     client = OAuth2::Client.new(ACOUSTIC_CLIENT_ID, ACOUSTIC_CLIENT_SECRET, site: "https://api-campaign-us-1.goacoustic.com/oauth/token")
     access_token = OAuth2::AccessToken.from_hash(client, refresh_token: ACOUSTIC_REFRESH_TOKEN).refresh!
 
-    @client = Acoustic.new({access_token: access_token.token, url: "https://api-campaign-us-1.goacoustic.com"})
+    @client = GoAcoustic.new({access_token: access_token.token, url: "https://api-campaign-us-1.goacoustic.com"})
 
     #add_recipeint
     #pass in user variables, database contact list, and contact list id

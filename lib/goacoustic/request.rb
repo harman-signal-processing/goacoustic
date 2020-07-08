@@ -1,4 +1,4 @@
-module Acoustic
+module GoAcoustic
   module Request
     def post(body)
       request(:post, body)
@@ -6,7 +6,7 @@ module Acoustic
 
     private
 
-    # POST the XML to the Acoustic end point.
+    # POST the XML to the GoAcoustic end point.
     #
     # @param body [String] The formatted XML of the API call make sure to call builder.to_xml.
     # @return [XML] XML Body from the API call

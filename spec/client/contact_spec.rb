@@ -1,8 +1,8 @@
 require 'helper'
 
-describe Acoustic::Client::Contact do
+describe GoAcoustic::Client::Contact do
   before do
-    @client = Acoustic::Client.new({access_token: "abc123",url: 'https://api-campaign-us-1.goacoustic.com'})
+    @client = GoAcoustic::Client.new({access_token: "abc123",url: 'https://api-campaign-us-1.goacoustic.com'})
   end
 
   describe "#add_recipient" do

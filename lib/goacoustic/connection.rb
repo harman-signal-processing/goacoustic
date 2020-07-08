@@ -1,12 +1,12 @@
 require 'faraday_middleware'
 
-module Acoustic
+module GoAcoustic
   # @private
   module Connection
     private
 
     def connection(options={})
-      connection = Faraday.new @acoustic_url do |conn|
+      connection = Faraday.new @goacoustic_url do |conn|
         # Uncomment if want to log to stdout
         #conn.response :logger
 

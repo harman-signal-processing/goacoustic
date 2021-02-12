@@ -36,10 +36,48 @@ module GoAcoustic
                   builder.VALUE field[1]
                 }
               end
-              }
             }
           }
-        response = post(xml)
+        }
+        post(xml)
+      end
+
+      # Retrieves a contact from a database
+      #
+      def get_recipient(list_id, recipient_id, fields=[], options={})
+        builder = Builder::XmlMarkup.new
+        xml = builder.Envelope {
+          builder.Body {
+            builder.SelectRecipientData {
+              builder.LIST_ID list_id
+              builder.RECIPIENT_ID recipient_id
+              builder.COLUMN {
+                builder.NAME "Recipient ID"
+                builder.VALUE recipient_id
+              }
+              unless options.empty?
+                options.each do |opt|
+                  builder.tag! opt[0], opt[1]
+                end
+              end
+              unless fields.empty?
+                fields.each do |field|
+                  builder.COLUMN {
+                    builder.NAME field[0].to_s
+                    builder.VALUE field[1]
+                  }
+                end
+              end
+            }
+          }
+        }
+
+        begin
+          response = post(xml)
+          response.Envelope.Body.RESULT
+        rescue
+          return false
+        end
       end
 
     end

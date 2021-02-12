@@ -20,10 +20,15 @@ A Ruby wrapper for the Acoustic API
 
     @client = GoAcoustic.new({access_token: access_token.token, url: "https://api-campaign-us-1.goacoustic.com"})
 
-    #add_recipeint
+    #add_recipient
     #pass in user variables, database contact list, and contact list id
     a = @client.add_recipient({email:"test@example.com"}, 123, [456])
-    resp.Envelope.Body.RESULT.SUCCESS # => "TRUE"
+    a.Envelope.Body.RESULT.SUCCESS # => "TRUE"
+
+    #get_recipient
+    #pass in database id and recipient id
+    r = @client.get_recipient(123, 456, [optional, fields])
+    r.Email # => "joe@schmoe.com"
 
 ## Contributing
 In the spirit of [free software][free-sw], **everyone** is encouraged to help improve

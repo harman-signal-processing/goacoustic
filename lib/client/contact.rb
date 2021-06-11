@@ -44,17 +44,22 @@ module GoAcoustic
 
       # Retrieves a contact from a database
       #
-      def get_recipient(list_id, recipient_id, fields=[], options={})
+      def get_recipient(fields, list_id, recipient_id=nil, options={})
         builder = Builder::XmlMarkup.new
         xml = builder.Envelope {
           builder.Body {
             builder.SelectRecipientData {
               builder.LIST_ID list_id
-              builder.RECIPIENT_ID recipient_id
-              builder.COLUMN {
-                builder.NAME "Recipient ID"
-                builder.VALUE recipient_id
-              }
+              if recipient_id
+                builder.RECIPIENT_ID recipient_id
+                builder.COLUMN {
+                  builder.NAME "Recipient ID"
+                  builder.VALUE recipient_id
+                }
+              end
+              if fields[:email]
+                builder.EMAIL fields[:email]
+              end
               unless options.empty?
                 options.each do |opt|
                   builder.tag! opt[0], opt[1]

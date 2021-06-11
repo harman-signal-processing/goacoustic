@@ -26,8 +26,8 @@ A Ruby wrapper for the Acoustic API
     a.Envelope.Body.RESULT.SUCCESS # => "TRUE"
 
     #get_recipient
-    #pass in database id and recipient id
-    r = @client.get_recipient(123, 456, [optional, fields])
+    #pass in database id and recipient id or email
+    r = @client.get_recipient({email:"joe@schmoe.com"}, database_id, recipient_id, optional_fields)
     r.Email # => "joe@schmoe.com"
 
 ## Contributing
